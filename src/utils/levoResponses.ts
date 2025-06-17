@@ -4,41 +4,41 @@ interface LevoResponse {
 }
 
 const greetings = [
-  "Hi there! I'm so glad you're here. How can I help brighten your day?",
-  "Hello! It's wonderful to see you. What's on your mind today?",
-  "Hey! I'm here and ready to help. What would you like to talk about?",
-  "Hi! I hope you're having a great day. How can I assist you?"
+  "Hello! I'm Levo, your AI assistant. I'm here to help you with any questions, tasks, or conversations you'd like to have. How can I assist you today?",
+  "Good to see you! I'm ready to help with whatever you need - whether it's answering questions, providing advice, or just having a thoughtful conversation. What's on your mind?",
+  "Welcome! I'm here to provide assistance, insights, and support for any topic you'd like to explore. How may I help you today?",
+  "Hello there! I'm designed to be helpful, informative, and engaging. Whether you need practical assistance or want to discuss ideas, I'm here for you. What would you like to talk about?"
 ];
 
 const workAdvice = [
-  "Try breaking that big task into smaller, manageable pieces. You've got this!",
-  "Remember to take short breaks every hour. Your brain needs time to recharge.",
-  "Focus on one thing at a time. Multitasking can actually slow you down.",
-  "Have you tried the Pomodoro Technique? 25 minutes of focused work, then a 5-minute break.",
-  "Sometimes a quick walk or some fresh air can give you the clarity you need."
+  "For complex tasks, I recommend breaking them into smaller, manageable components. This approach, often called 'chunking,' can make overwhelming projects feel more achievable and help you maintain momentum as you complete each piece.",
+  "Regular breaks are scientifically proven to enhance productivity and creativity. Consider implementing the Pomodoro Technique: 25 minutes of focused work followed by a 5-minute break. This can help maintain your cognitive performance throughout the day.",
+  "Multitasking often reduces efficiency rather than improving it. Research suggests that focusing on one task at a time leads to better quality work and faster completion. Try dedicating specific time blocks to individual tasks.",
+  "Time management is crucial for productivity. Consider prioritizing your tasks using methods like the Eisenhower Matrix, which categorizes tasks by urgency and importance. This can help you focus on what truly matters.",
+  "Sometimes a change of environment or a brief physical activity can provide the mental clarity needed to solve problems. A short walk or even standing and stretching can stimulate creative thinking."
 ];
 
 const motivationalResponses = [
-  "You're doing amazing! Every step forward, no matter how small, is progress.",
-  "I believe in you! You have the strength to overcome any challenge.",
-  "Remember, it's okay to have tough days. What matters is that you keep going.",
-  "You're more resilient than you know. Trust in your ability to figure things out.",
-  "Every expert was once a beginner. Be patient with yourself as you learn and grow."
+  "Progress isn't always linear, and that's perfectly normal. Every step forward, regardless of size, contributes to your overall growth and development. Acknowledge your efforts and celebrate small wins along the way.",
+  "Challenges are opportunities for growth and learning. While they may feel overwhelming in the moment, they often lead to increased resilience, new skills, and valuable insights that serve you well in the future.",
+  "It's important to remember that everyone faces difficulties and setbacks. What distinguishes successful individuals is their persistence and willingness to learn from experiences. You have the capability to overcome current challenges.",
+  "Self-compassion is just as important as determination. Treat yourself with the same kindness you'd offer a good friend facing similar circumstances. This balanced approach often leads to better outcomes and sustained motivation.",
+  "Growth and mastery take time. Every expert in any field was once a beginner who persisted through the learning process. Trust in your ability to develop and improve with consistent effort and patience."
 ];
 
 const stressRelief = [
-  "Let's take a deep breath together. Breathe in slowly... and out. You're safe right now.",
-  "It sounds like you're feeling overwhelmed. That's completely normal. What's one small thing you can do right now?",
-  "Stress is tough, but you're tougher. Can you tell me what's weighing on your mind?",
-  "Sometimes when we're stressed, our minds race. Try focusing on just this moment, right here with me.",
-  "You don't have to carry everything alone. I'm here to listen and help however I can."
+  "I understand you're experiencing stress, which is a natural human response to challenging situations. Let's take a moment to address this together. Can you tell me more about what's contributing to these feelings so I can offer more targeted support?",
+  "Stress can feel overwhelming, but there are effective strategies to manage it. Deep breathing exercises, mindfulness techniques, or even a brief walk can help regulate your nervous system. What feels most accessible to you right now?",
+  "When we're stressed, our minds often focus on worst-case scenarios. It can be helpful to ground yourself in the present moment and identify what aspects of the situation you can actually control. Would you like to explore this together?",
+  "Stress is often a signal that we're dealing with something important to us. While uncomfortable, it's also an indication that you care about the outcome. Let's work together to develop strategies that can help you navigate this situation more effectively.",
+  "Remember that seeking support is a sign of wisdom, not weakness. Whether it's talking through problems, asking for help with tasks, or simply having someone listen, connection with others is a powerful stress management tool."
 ];
 
 const breakReminders = [
-  "Hey, you've been working hard! How about a quick stretch or a walk around the block?",
-  "Time for a little break! Your eyes and mind will thank you for stepping away from the screen.",
-  "You deserve a moment to breathe. Maybe grab some water or do a few stretches?",
-  "Working hard is great, but taking breaks actually makes you more productive. Treat yourself to a few minutes of rest."
+  "I notice you've been working diligently. Research shows that regular breaks actually improve focus and productivity. Consider taking a few minutes to step away from your current task - your brain will thank you for the reset.",
+  "Taking breaks isn't just about rest; it's about optimizing your cognitive performance. A brief pause can help consolidate what you've learned and provide fresh perspective when you return to your work.",
+  "Your well-being is important for sustained productivity. Consider taking a moment to hydrate, stretch, or simply look away from your screen. These small acts of self-care can significantly impact your energy and focus.",
+  "Mental fatigue is real and can impact the quality of your work. A strategic break now can prevent burnout later and help you maintain high standards throughout your day. What kind of break would feel most refreshing to you?"
 ];
 
 const analyzeUserInput = (input: string): { intent: string; emotion: string } => {
@@ -46,28 +46,30 @@ const analyzeUserInput = (input: string): { intent: string; emotion: string } =>
   
   // Detect emotions
   let emotion = 'neutral';
-  if (lowerInput.includes('sad') || lowerInput.includes('down') || lowerInput.includes('depressed')) {
+  if (lowerInput.includes('sad') || lowerInput.includes('down') || lowerInput.includes('depressed') || lowerInput.includes('upset')) {
     emotion = 'sad';
-  } else if (lowerInput.includes('happy') || lowerInput.includes('great') || lowerInput.includes('excited')) {
+  } else if (lowerInput.includes('happy') || lowerInput.includes('great') || lowerInput.includes('excited') || lowerInput.includes('wonderful')) {
     emotion = 'happy';
-  } else if (lowerInput.includes('stressed') || lowerInput.includes('overwhelmed') || lowerInput.includes('anxious')) {
+  } else if (lowerInput.includes('stressed') || lowerInput.includes('overwhelmed') || lowerInput.includes('anxious') || lowerInput.includes('worried')) {
     emotion = 'concerned';
   }
 
   // Detect intents
   let intent = 'general';
-  if (lowerInput.includes('hello') || lowerInput.includes('hi') || lowerInput.includes('hey')) {
+  if (lowerInput.includes('hello') || lowerInput.includes('hi') || lowerInput.includes('hey') || lowerInput.includes('good morning') || lowerInput.includes('good afternoon')) {
     intent = 'greeting';
-  } else if (lowerInput.includes('work') || lowerInput.includes('job') || lowerInput.includes('task') || lowerInput.includes('project')) {
+  } else if (lowerInput.includes('work') || lowerInput.includes('job') || lowerInput.includes('task') || lowerInput.includes('project') || lowerInput.includes('productivity')) {
     intent = 'work';
-  } else if (lowerInput.includes('break') || lowerInput.includes('tired') || lowerInput.includes('rest')) {
+  } else if (lowerInput.includes('break') || lowerInput.includes('tired') || lowerInput.includes('rest') || lowerInput.includes('exhausted')) {
     intent = 'break';
-  } else if (lowerInput.includes('help') || lowerInput.includes('advice') || lowerInput.includes('suggest')) {
+  } else if (lowerInput.includes('help') || lowerInput.includes('advice') || lowerInput.includes('suggest') || lowerInput.includes('recommend')) {
     intent = 'help';
-  } else if (lowerInput.includes('motivat') || lowerInput.includes('inspir') || lowerInput.includes('encourage')) {
+  } else if (lowerInput.includes('motivat') || lowerInput.includes('inspir') || lowerInput.includes('encourage') || lowerInput.includes('confidence')) {
     intent = 'motivation';
-  } else if (lowerInput.includes('stress') || lowerInput.includes('overwhelm') || lowerInput.includes('anxious')) {
+  } else if (lowerInput.includes('stress') || lowerInput.includes('overwhelm') || lowerInput.includes('anxious') || lowerInput.includes('pressure')) {
     intent = 'stress';
+  } else if (lowerInput.includes('explain') || lowerInput.includes('what is') || lowerInput.includes('how does') || lowerInput.includes('tell me about')) {
+    intent = 'information';
   }
 
   return { intent, emotion };
@@ -80,7 +82,7 @@ export const getLevoResponse = async (userInput: string): Promise<LevoResponse> 
   let responseEmotion: LevoResponse['emotion'] = 'neutral';
 
   // Add a small delay to simulate processing
-  await new Promise(resolve => setTimeout(resolve, 500 + Math.random() * 1000));
+  await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 1200));
 
   switch (intent) {
     case 'greeting':
@@ -90,12 +92,12 @@ export const getLevoResponse = async (userInput: string): Promise<LevoResponse> 
     
     case 'work':
       responseText = workAdvice[Math.floor(Math.random() * workAdvice.length)];
-      responseEmotion = 'happy';
+      responseEmotion = 'neutral';
       break;
     
     case 'motivation':
       responseText = motivationalResponses[Math.floor(Math.random() * motivationalResponses.length)];
-      responseEmotion = 'excited';
+      responseEmotion = 'happy';
       break;
     
     case 'stress':
@@ -105,23 +107,33 @@ export const getLevoResponse = async (userInput: string): Promise<LevoResponse> 
     
     case 'break':
       responseText = breakReminders[Math.floor(Math.random() * breakReminders.length)];
-      responseEmotion = 'happy';
+      responseEmotion = 'neutral';
+      break;
+    
+    case 'information':
+      responseText = "I'd be happy to help explain that topic. Could you provide a bit more detail about what specific aspect you'd like me to focus on? This will help me give you the most relevant and useful information.";
+      responseEmotion = 'neutral';
+      break;
+    
+    case 'help':
+      responseText = "I'm here to assist you in whatever way I can. Whether you need information, advice, problem-solving support, or just someone to discuss ideas with, I'm ready to help. What specific area would you like assistance with?";
+      responseEmotion = 'neutral';
       break;
     
     default:
-      // Handle general conversation
+      // Handle general conversation with more sophisticated responses
       if (emotion === 'sad') {
-        responseText = "I can hear that you might be going through a tough time. I'm here for you. Would you like to talk about what's bothering you, or would you prefer some gentle encouragement?";
+        responseText = "I can sense that you might be going through a difficult time, and I want you to know that your feelings are valid. While I'm here to listen and offer support, please remember that it's also important to reach out to friends, family, or professionals when you need additional help. What would be most helpful for you right now?";
         responseEmotion = 'concerned';
       } else if (emotion === 'happy') {
-        responseText = "That's wonderful! I love hearing positive energy. Your good mood is contagious! What's making you feel so great today?";
+        responseText = "It's wonderful to hear the positive energy in your message! Happiness and enthusiasm can be incredibly motivating and often lead to great outcomes. I'd love to hear more about what's bringing you joy or excitement today.";
         responseEmotion = 'excited';
       } else {
         const generalResponses = [
-          "I'm here to listen and help in any way I can. What's on your mind?",
-          "Thank you for sharing that with me. How can I best support you right now?",
-          "I appreciate you talking with me. Is there something specific I can help you with?",
-          "It's great that we can chat like this. What would be most helpful for you today?"
+          "Thank you for sharing that with me. I'm here to engage in meaningful conversation and provide assistance where I can. What aspects of this topic would you like to explore further?",
+          "I appreciate you taking the time to communicate with me. Every conversation is an opportunity to learn and help. How can I best support you or contribute to what you're thinking about?",
+          "That's an interesting point you've raised. I'm designed to be helpful, informative, and engaging across a wide range of topics. What direction would you like our conversation to take?",
+          "I'm here to provide thoughtful responses and assistance tailored to your needs. Whether you're looking for information, advice, creative input, or just engaging dialogue, I'm ready to help. What would be most valuable to you?"
         ];
         responseText = generalResponses[Math.floor(Math.random() * generalResponses.length)];
         responseEmotion = 'neutral';
